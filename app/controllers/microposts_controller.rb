@@ -14,10 +14,6 @@ class MicropostsController < ApplicationController
     end
   end
 
-  def show
-  @user = User.find(params[:id])
-  @likes=current_user.likes.order(id: :desc).page(params[:page])
-  end
 
 
   def destroy

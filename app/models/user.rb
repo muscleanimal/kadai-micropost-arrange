@@ -45,6 +45,7 @@ end
   end
   
     def favorite?(other_micropost)
+      
     self.likes.include?(other_micropost)
   end
 
