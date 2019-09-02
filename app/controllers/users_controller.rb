@@ -27,6 +27,29 @@ class UsersController < ApplicationController
     end
   end
 
+  def edit
+          @user = User.find(params[:id])
+  end
+  
+  def update
+        @user = User.find(params[:id])
+
+    if @user.update(user_params)
+      flash[:success] = 'プロフィール は正常に更新されました'
+      redirect_to root_url
+    else
+      flash.now[:danger] = 'プロフィール は更新されませんでした'
+      render :edit
+    end
+  end
+  
+    def destroy
+    @user = User.find(params[:id])
+    @user.destroy
+    flash[:success] = '退会しました。'
+    redirect_back(fallback_location: root_path)
+  end
+
   def followings
     @user = User.find(params[:id])
     @followings = @user.followings.page(params[:page])
@@ -46,9 +69,10 @@ class UsersController < ApplicationController
 end 
 
 
+
   private
 
   def user_params
-    params.require(:user).permit(:name, :email, :password, :password_confirmation)
+    params.require(:user).permit(:name, :email, :password, :password_confirmation, :age, :img, :explain)
   end
 end

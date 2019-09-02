@@ -12,6 +12,7 @@
         <div class="row mt-2">
           <% if current_user == micropost.user %>
             <%= link_to "Delete", micropost, method: :delete, data: { confirm: "You sure?" }, class: 'btn btn-danger btn-sm' %>
+            <%= link_to 'このマイクロポストを編集する', edit_micropost_path(@micropost=micropost.id) %>
           <% end %>
           
           <div class="col-sm-3">

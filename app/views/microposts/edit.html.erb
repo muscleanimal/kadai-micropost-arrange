@@ -1,0 +1,8 @@
+<h1>マイクロポスト編集ページ</h1>
+
+<%= form_with(model: @micropost, local: true) do |f| %>
+  <%= f.label :content, 'マイクロポスト' %>
+  <%= f.text_field :content %>
+
+  <%= f.submit '編集' %>
+<% end %>

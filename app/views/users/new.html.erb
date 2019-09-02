@@ -13,6 +13,16 @@
       </div>
 
       <div class="form-group">
+        <%= f.label :age, 'Age' %>
+        <%= f.text_field :age, class: 'form-control' %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :explain, '自己紹介' %>
+        <%= f.text_field :explain, class: 'form-control' %>
+      </div>
+
+      <div class="form-group">
         <%= f.label :email, 'Email' %>
         <%= f.email_field :email, class: 'form-control' %>
       </div>
@@ -26,6 +36,11 @@
         <%= f.label :password_confirmation, 'Confirmation' %>
         <%= f.password_field :password_confirmation, class: 'form-control' %>
       </div>
+      
+  <div class="from-group">
+    <%= f.label :Img %>
+    <%= f.file_field :img, id: :img_picture %>
+  </div>
 
       <%= f.submit 'Sign up', class: 'btn btn-primary btn-block' %>
     <% end %>

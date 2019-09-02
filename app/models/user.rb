@@ -4,6 +4,8 @@ class User < ApplicationRecord
   validates :email, presence: true, length: { maximum: 255 },
                     format: { with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i },
                     uniqueness: { case_sensitive: false }
+                    
+                    
   has_secure_password
 
   has_many :microposts
@@ -13,6 +15,8 @@ class User < ApplicationRecord
   has_many :followers, through: :reverses_of_relationship, source: :user
   has_many :favorites
   has_many :likes, through: :favorites, source: :micropost
+
+  mount_uploader :img, ImgUploader
 
   def follow(other_user)
     unless self == other_user
@@ -48,6 +52,8 @@ end
       
     self.likes.include?(other_micropost)
   end
+  
+  
 
   
 end
